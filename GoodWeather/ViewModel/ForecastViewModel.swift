@@ -37,11 +37,13 @@ final class ForecastViewModel: ObservableObject {
             return
         }
         weatherService.getWeather(for: city) { [self] result in
-            switch result {
-            case .success(let weather):
-                mapModel(weather: weather)
-            case .failure(_):
-                loadingError = true
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let weather):
+                    mapModel(weather: weather)
+                case .failure(_):
+                    loadingError = true
+                }
             }
         }
     }
@@ -90,5 +92,5 @@ final class ForecastViewModel: ObservableObject {
     private func format(temperature: Double) -> String {
         "\(Int(temperature))°"
     }
-
+    
 }

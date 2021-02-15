@@ -19,13 +19,13 @@ final class URLSessionWeatherService: WeatherService {
         let request = URLRequest(url: requestUrl)
         URLSession.shared.dataTask(with: request) { responseText, response, error in
             guard let json = responseText else {
-                DispatchQueue.main.async { callback(.failure(.requestFailed)) }
+                callback(.failure(.requestFailed))
                 return
             }
             if let weather = try? JSONDecoder().decode(Weather.self, from: json) {
-                DispatchQueue.main.async { callback(.success(weather)) }
+                callback(.success(weather))
             } else {
-                DispatchQueue.main.async { callback(.failure(.parsingFailed))}
+                callback(.failure(.parsingFailed))
             }
         }.resume()
     }
