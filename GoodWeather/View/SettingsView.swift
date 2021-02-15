@@ -32,6 +32,7 @@ struct SettingsView: View {
     
     private var closeButton: some View {
         Image(systemName: "xmark.circle")
+            .buttonStyle(DefaultButtonStyle())
             .imageScale(.large)
             .frame(width: 40, height: 40)
     }

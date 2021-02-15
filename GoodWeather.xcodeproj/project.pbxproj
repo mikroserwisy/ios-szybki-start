@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		80AE02F425DB200B0038E882 /* View+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AE02F325DB200B0038E882 /* View+ext.swift */; };
+		80AE02F925DB20330038E882 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AE02F825DB20330038E882 /* ButtonStyle.swift */; };
 		B21D3A0725DA79BB0089171D /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21D3A0625DA79BB0089171D /* City.swift */; };
 		B21D3A0C25DA7A410089171D /* Description.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21D3A0B25DA7A410089171D /* Description.swift */; };
 		B21D3A1125DA7B9C0089171D /* Temperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21D3A1025DA7B9C0089171D /* Temperature.swift */; };
@@ -53,6 +55,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		80AE02F325DB200B0038E882 /* View+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ext.swift"; sourceTree = "<group>"; };
+		80AE02F825DB20330038E882 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 		B21D3A0625DA79BB0089171D /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		B21D3A0B25DA7A410089171D /* Description.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Description.swift; sourceTree = "<group>"; };
 		B21D3A1025DA7B9C0089171D /* Temperature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Temperature.swift; sourceTree = "<group>"; };
@@ -119,6 +123,8 @@
 				B2C6313425DA72E400C1D71D /* Image+ext.swift */,
 				B2C6313925DA744E00C1D71D /* Text+ext.swift */,
 				B2391D4725DABF290071607A /* Capitalized.swift */,
+				80AE02F325DB200B0038E882 /* View+ext.swift */,
+				80AE02F825DB20330038E882 /* ButtonStyle.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -365,10 +371,12 @@
 				B2C6313525DA72E400C1D71D /* Image+ext.swift in Sources */,
 				B2CC776425DA606C003C3067 /* ForecastView.swift in Sources */,
 				B21D3A4725DA945D0089171D /* SettingsView.swift in Sources */,
+				80AE02F925DB20330038E882 /* ButtonStyle.swift in Sources */,
 				B2CC776225DA606C003C3067 /* GoodWeatherApp.swift in Sources */,
 				B21D3A1B25DA7CB00089171D /* Weather.swift in Sources */,
 				B21D3A2F25DA816B0089171D /* ForecastViewModel.swift in Sources */,
 				B2C6313F25DA75D100C1D71D /* DayForecastView.swift in Sources */,
+				80AE02F425DB200B0038E882 /* View+ext.swift in Sources */,
 				B2C6313025DA6E9100C1D71D /* GradientView.swift in Sources */,
 				B21D3A4F25DAA6660089171D /* URLSessionWeatherService.swift in Sources */,
 				B21D3A0C25DA7A410089171D /* Description.swift in Sources */,
