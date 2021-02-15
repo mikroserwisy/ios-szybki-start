@@ -12,15 +12,13 @@ struct DayForecastView: View {
     let viewModel: DayForecastViewModel
     
     var body: some View {
-        NavigationLink(destination: ForecastDetailsView(viewModel: viewModel)) {
-            VStack(spacing: 4) {
-                Text(viewModel.date)
-                    .defaultStyle(size: 18)
-                Image(systemName: viewModel.icon)
-                    .iconStyle(width: 40, height: 40)
-                Text(viewModel.temperature)
-                    .defaultStyle(size: 18)
-            }
+        VStack(spacing: 4) {
+            Text(viewModel.date)
+                .defaultStyle(size: 18)
+            Image(systemName: viewModel.icon)
+                .iconStyle(width: 40, height: 40)
+            Text(viewModel.temperature)
+                .defaultStyle(size: 18)
         }
     }
     

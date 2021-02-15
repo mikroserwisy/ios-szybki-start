@@ -26,6 +26,9 @@ final class ForecastViewModel: ObservableObject {
     
     init(weatherService: WeatherService) {
         self.weatherService = weatherService
+        if let cityName = UserDefaults.standard.string(forKey: "location") {
+            getWeather(for: cityName)
+        }
     }
     
     func getWeather(for city: String) {
