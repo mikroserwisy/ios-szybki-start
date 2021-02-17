@@ -32,9 +32,7 @@ struct ForecastView: View {
                 Spacer()
                 Image(systemName: viewModel.icon)
                     .iconStyle(width: 200, height: 200)
-                    .onTapGesture(count: 2) {
-                        showCity = !showCity
-                    }
+                    .onTapGesture(count: 2) { showCity.toggle() }
                 Text(viewModel.temperature)
                     .defaultStyle(size: 64)
                 Spacer()
