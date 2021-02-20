@@ -16,7 +16,7 @@ struct DayForecastView: View {
             Text(viewModel.date)
                 .defaultStyle(size: 18)
             Image(systemName: viewModel.icon)
-                .iconStyle(width: 40, height: 40)
+                .icon(width: 40, height: 40)
             Text(viewModel.temperature)
                 .defaultStyle(size: 18)
         }

@@ -21,7 +21,7 @@ struct ForecastView: View {
                 HStack {
                     Spacer()
                     Image(systemName: "slider.horizontal.3")
-                        .colorIconStyle(width: 20, height: 20)
+                        .icon(width: 20, height: 20)
                         .onTapGesture { showSettings = true }
                 }
                 .padding(.trailing)
@@ -31,7 +31,7 @@ struct ForecastView: View {
                 }
                 Spacer()
                 Image(systemName: viewModel.icon)
-                    .iconStyle(width: 200, height: 200)
+                    .icon(width: 200, height: 200)
                     .onTapGesture(count: 2) { showCity.toggle() }
                 Text(viewModel.temperature)
                     .defaultStyle(size: 64)

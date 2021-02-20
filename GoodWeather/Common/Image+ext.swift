@@ -9,15 +9,16 @@ import SwiftUI
 
 extension Image {
     
-    func iconStyle(width: CGFloat, height: CGFloat) -> some View {
+    func icon(width: CGFloat, height: CGFloat) -> some View {
         self.renderingMode(.original)
             .size(width: width, height: width)
     }
     
-    func colorIconStyle(width: CGFloat, height: CGFloat, color: Color = .white) -> some View {
+    func coloredIcon(width: CGFloat, height: CGFloat, color: Color = .white, opacity: Double = 1.0) -> some View {
         self.renderingMode(.template)
             .size(width: width, height: width)
             .foregroundColor(color)
+            .opacity(opacity)
     }
     
     private func size(width: CGFloat, height: CGFloat) -> some View {
