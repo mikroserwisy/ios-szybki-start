@@ -112,7 +112,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B2C6312925DA6D5B00C1D71D /* Common */ = {
+		B2C6312925DA6D5B00C1D71D /* Commons */ = {
 			isa = PBXGroup;
 			children = (
 				B2C6312A25DA6D7E00C1D71D /* Color+ext.swift */,
@@ -121,7 +121,7 @@
 				80AE02F325DB200B0038E882 /* View+ext.swift */,
 				80AE02F825DB20330038E882 /* ButtonStyle.swift */,
 			);
-			path = Common;
+			path = Commons;
 			sourceTree = "<group>";
 		};
 		B2CC775525DA606C003C3067 = {
@@ -147,11 +147,11 @@
 		B2CC776025DA606C003C3067 /* GoodWeather */ = {
 			isa = PBXGroup;
 			children = (
-				B2C6312925DA6D5B00C1D71D /* Common */,
+				B2C6312925DA6D5B00C1D71D /* Commons */,
 				B2CC779325DA69E2003C3067 /* Resources */,
-				B2CC778F25DA697F003C3067 /* Model */,
-				B2CC779025DA6987003C3067 /* ViewModel */,
-				B2CC779125DA6990003C3067 /* View */,
+				B2CC778F25DA697F003C3067 /* Models */,
+				B2CC779025DA6987003C3067 /* ViewModels */,
+				B2CC779125DA6990003C3067 /* Views */,
 				B2CC776125DA606C003C3067 /* GoodWeatherApp.swift */,
 				B21D3A4225DA91BF0089171D /* Localizable.strings */,
 				B2CC776725DA606D003C3067 /* Preview Content */,
@@ -185,7 +185,7 @@
 			path = GoodWeatherUITests;
 			sourceTree = "<group>";
 		};
-		B2CC778F25DA697F003C3067 /* Model */ = {
+		B2CC778F25DA697F003C3067 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				B21D3A0625DA79BB0089171D /* City.swift */,
@@ -198,19 +198,19 @@
 				B21D3A4E25DAA6660089171D /* URLSessionWeatherService.swift */,
 				B21D3A2425DA7E2C0089171D /* HttpError.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
-		B2CC779025DA6987003C3067 /* ViewModel */ = {
+		B2CC779025DA6987003C3067 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				B21D3A2E25DA816B0089171D /* ForecastViewModel.swift */,
 				B21D3A3325DA879D0089171D /* DayForecastViewModel.swift */,
 			);
-			path = ViewModel;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		B2CC779125DA6990003C3067 /* View */ = {
+		B2CC779125DA6990003C3067 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				B2CC776325DA606C003C3067 /* ForecastView.swift */,
@@ -218,7 +218,7 @@
 				B2C6312F25DA6E9100C1D71D /* GradientView.swift */,
 				B21D3A4625DA945D0089171D /* SettingsView.swift */,
 			);
-			path = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		B2CC779325DA69E2003C3067 /* Resources */ = {
