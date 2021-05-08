@@ -21,18 +21,21 @@ struct SettingsView: View {
             }
             .padding(.top, 6)
             Form {
-                Section(header: Text(LocalizedStringKey("Place"))) {
-                    TextField(LocalizedStringKey("Enter city name"), text: $cityName)
+                Section(header: Text("Place")) {
+                    TextField("Enter city name", text: $cityName)
                 }
             }
         }
         .onAppear { cityName = location }
-        .onDisappear { location = cityName }
+        .onDisappear {
+            if !cityName.isEmpty {
+                location = cityName
+            }
+        }
     }
     
     private var closeButton: some View {
         Image(systemName: "xmark.circle")
-            .buttonStyle(DefaultButtonStyle())
             .imageScale(.large)
             .frame(width: 40, height: 40)
     }

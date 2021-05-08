@@ -14,11 +14,11 @@ struct DayForecastView: View {
     var body: some View {
         VStack(spacing: 4) {
             Text(viewModel.date)
-                .defaultStyle(size: 18)
+                .defaultStyle()
             Image(systemName: viewModel.icon)
-                .icon(width: 40, height: 40)
+                .icon()
             Text(viewModel.temperature)
-                .defaultStyle(size: 18)
+                .defaultStyle()
         }
     }
     
@@ -28,6 +28,7 @@ struct DayForecastView_Previews: PreviewProvider {
     
     static var previews: some View {
         DayForecastView(viewModel: DayForecastViewModel(date: "Pn.", temperature: "-12°", icon: "sun.max.fill"))
+            .preferredColorScheme(.dark)
     }
     
 }

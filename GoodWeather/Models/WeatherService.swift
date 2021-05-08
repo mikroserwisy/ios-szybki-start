@@ -7,6 +7,6 @@
 
 protocol WeatherService {
     
-    func getWeather(for city: String, callback: @escaping (Result<Weather, HttpError>) -> ())
+    func getWeather(for city: String, callback: @escaping (Result<[Forecast], HttpError>) -> ())
     
 }

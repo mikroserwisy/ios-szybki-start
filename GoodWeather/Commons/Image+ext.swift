@@ -9,20 +9,19 @@ import SwiftUI
 
 extension Image {
     
-    func icon(width: CGFloat, height: CGFloat) -> some View {
-        self.renderingMode(.original)
+    func icon(width: CGFloat = 40, height: CGFloat = 40) -> some View {
+        renderingMode(.original)
             .size(width: width, height: width)
     }
     
-    func coloredIcon(width: CGFloat, height: CGFloat, color: Color = .white, opacity: Double = 1.0) -> some View {
-        self.renderingMode(.template)
+    func symbol(width: CGFloat, height: CGFloat, color: Color = .white) -> some View {
+        renderingMode(.template)
             .size(width: width, height: width)
             .foregroundColor(color)
-            .opacity(opacity)
     }
     
     private func size(width: CGFloat, height: CGFloat) -> some View {
-        self.resizable()
+        resizable()
             .aspectRatio(contentMode: .fit)
             .frame(width: width, height: height)
     }

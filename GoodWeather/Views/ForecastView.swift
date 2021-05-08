@@ -10,34 +10,31 @@ import SwiftUI
 struct ForecastView: View {
     
     @ObservedObject var viewModel: ForecastViewModel
-    @State private var showCity = true
     @State private var showSettings = false
     @AppStorage("location") private var location = ""
     
     var body: some View {
         ZStack {
-            GradientView(topColor: .top, bottomColor: .bottom)
+            LinearGradient(gradient: Gradient(colors: [.top, .bottom]), startPoint: .top, endPoint: .bottom)
+                .edgesIgnoringSafeArea(.all)
             VStack {
                 HStack {
                     Spacer()
                     Image(systemName: "slider.horizontal.3")
-                        .icon(width: 20, height: 20)
+                        .symbol(width: 20, height: 20)
                         .onTapGesture { showSettings = true }
                 }
                 .padding(.trailing)
-                if showCity {
-                    Text(viewModel.city)
-                        .defaultStyle(size: 34)
+                Spacer()
+                if let forecast = viewModel.forecast.first {
+                    Image(systemName: forecast.icon)
+                        .icon(width: 200, height: 200)
+                    Text(forecast.temperature)
+                        .defaultStyle(size: 64)
                 }
                 Spacer()
-                Image(systemName: viewModel.icon)
-                    .icon(width: 200, height: 200)
-                    .onTapGesture(count: 2) { showCity.toggle() }
-                Text(viewModel.temperature)
-                    .defaultStyle(size: 64)
-                Spacer()
                 HStack(spacing: 16) {
-                    ForEach(viewModel.forecast, content: DayForecastView.init)
+                    ForEach(viewModel.forecast.dropFirst(), content: DayForecastView.init)
                 }
                 Spacer()
             }

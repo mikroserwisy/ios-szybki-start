@@ -9,20 +9,10 @@ import Foundation
 
 final class ForecastViewModel: ObservableObject {
     
-    private let weatherService: WeatherService
-    
-    @Published var city = ""
-    @Published var temperature = ""
-    @Published var icon = "sun.max.fill"
     @Published var forecast: [DayForecastViewModel] = []
     @Published var loadingError = false
     
-    private lazy var dateFormatter: DateFormatter = {
-        let dateFormatter =  DateFormatter()
-        dateFormatter.locale = Locale(identifier: Locale.preferredLanguages[0])
-        dateFormatter.dateFormat = "E"
-        return dateFormatter
-    }()
+    private let weatherService: WeatherService
     
     init(weatherService: WeatherService) {
         self.weatherService = weatherService
@@ -33,64 +23,53 @@ final class ForecastViewModel: ObservableObject {
     
     func getWeather(for city: String) {
         loadingError = false
-        if city.isEmpty {
-            return
-        }
-        weatherService.getWeather(for: city) { [self] result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let weather):
-                    mapModel(weather: weather)
-                case .failure(_):
-                    loadingError = true
-                }
+        weatherService.getWeather(for: city, callback: onWeatherResult)
+    }
+    
+    private func onWeatherResult(_ result: Result<[Forecast], HttpError>) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            switch result {
+            case .success(let forecastData):
+                self.forecast = self.map(data: forecastData)
+            case .failure(_):
+                self.loadingError = true
             }
         }
     }
     
-    private func mapModel(weather: Weather) {
-        city = weather.city.name
-        if let currentForecast = weather.forecast.first, let icon = currentForecast.description.first?.icon {
-            temperature = format(temperature: currentForecast.temperature.day)
-            self.icon = map(icon: icon)
+    private func map(data: [Forecast]) -> [DayForecastViewModel] {
+        data.map { entry in
+            let date = format(date: entry.date)
+            let temperature = format(temperature: entry.temperature.day)
+            let icon = map(icon: entry.description.first?.icon ?? "")
+            return DayForecastViewModel(date: date, temperature: temperature, icon: icon)
         }
-        forecast = weather.forecast.dropFirst().map(mapModel(forecast:))
-    }
-    
-    private func mapModel(forecast: Forecast) -> DayForecastViewModel {
-        let date = dateFormatter.string(from: Date(timeIntervalSince1970: forecast.date))
-        let temperature = format(temperature: forecast.temperature.day)
-        let icon = map(icon: forecast.description.first?.icon ?? "")
-        return DayForecastViewModel(date: date, temperature: temperature, icon: icon)
     }
     
     private func map(icon: String) -> String {
         switch icon {
-        case "01d", "01n":
+        case "01d":
             return "sun.max.fill"
-        case "02d", "02n":
+        case "02d":
             return "cloud.sun.fill"
-        case "03d", "03n":
+        case "03d":
             return "cloud.fill"
-        case "04d", "04n":
+        case "04d":
             return "smoke.fill"
-        case "09d", "09n":
+        case "09d":
             return "cloud.rain.fill"
-        case "10d", "10n":
+        case "10d":
             return "cloud.sun.rain.fill"
-        case "11d", "11n":
+        case "11d":
             return "cloud.sun.bolt.fill"
-        case "13d", "13n":
+        case "13d":
             return "snow"
-        case "50d", "50n":
+        case "50d":
             return "cloud.fog.fill"
         default:
             return "xmark.circle"
         }
-    }
-    
-    private func format(temperature: Double) -> String {
-        "\(Int(temperature))°"
     }
     
 }
