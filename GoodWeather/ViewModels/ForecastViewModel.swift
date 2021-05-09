@@ -1,10 +1,3 @@
-//
-//  ForecastViewModel.swift
-//  GoodWeather
-//
-//  Created by Łukasz Andrzejewski on 15/02/2021.
-//
-
 import Foundation
 
 final class ForecastViewModel: ObservableObject {
@@ -12,10 +5,13 @@ final class ForecastViewModel: ObservableObject {
     @Published var forecast: [DayForecastViewModel] = []
     @Published var loadingError = false
     
-    private let weatherService: WeatherService
+    private let forecastProvider: ForecastProvider
+    private let dateFormatter = DateFormatter()
+    private let icons = ["01d": "sun.max.fill", "02d": "cloud.sun.fill", "03d": "cloud.fill", "04d": "smoke.fill", "09d": "cloud.rain.fill", "10d": "cloud.sun.rain.fill", "11d": "cloud.sun.bolt.fill", "13d": "snow", "50d": "cloud.fog.fill"]
     
-    init(weatherService: WeatherService) {
-        self.weatherService = weatherService
+    init(forecastProvider: ForecastProvider) {
+        self.forecastProvider = forecastProvider
+        dateFormatter.dateFormat = "E"
         if let cityName = UserDefaults.standard.string(forKey: "location") {
             getWeather(for: cityName)
         }
@@ -23,52 +19,27 @@ final class ForecastViewModel: ObservableObject {
     
     func getWeather(for city: String) {
         loadingError = false
-        weatherService.getWeather(for: city, callback: onWeatherResult)
+        forecastProvider.getForecast(for: city, callback: onWeatherResult)
     }
     
-    private func onWeatherResult(_ result: Result<[Forecast], HttpError>) {
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
+    private func onWeatherResult(_ result: Result<[DayForecast], HttpError>) {
+        DispatchQueue.main.async { [self] in
+            //guard let self = self else { return }
             switch result {
             case .success(let forecastData):
-                self.forecast = self.map(data: forecastData)
+                forecast = toViewModel(data: forecastData)
             case .failure(_):
-                self.loadingError = true
+                loadingError = true
             }
         }
     }
     
-    private func map(data: [Forecast]) -> [DayForecastViewModel] {
+    private func toViewModel(data: [DayForecast]) -> [DayForecastViewModel] {
         data.map { entry in
-            let date = format(date: entry.date)
-            let temperature = format(temperature: entry.temperature.day)
-            let icon = map(icon: entry.description.first?.icon ?? "")
-            return DayForecastViewModel(date: date, temperature: temperature, icon: icon)
-        }
-    }
-    
-    private func map(icon: String) -> String {
-        switch icon {
-        case "01d":
-            return "sun.max.fill"
-        case "02d":
-            return "cloud.sun.fill"
-        case "03d":
-            return "cloud.fill"
-        case "04d":
-            return "smoke.fill"
-        case "09d":
-            return "cloud.rain.fill"
-        case "10d":
-            return "cloud.sun.rain.fill"
-        case "11d":
-            return "cloud.sun.bolt.fill"
-        case "13d":
-            return "snow"
-        case "50d":
-            return "cloud.fog.fill"
-        default:
-            return "xmark.circle"
+            let date = dateFormatter.string(from: entry.date)
+            let temperature = "\(entry.temperature)°"
+            let icon = icons[entry.icon] ?? "xmark.circle"
+            return DayForecastViewModel(icon: icon, temperature: temperature, date: date)
         }
     }
     

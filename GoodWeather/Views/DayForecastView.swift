@@ -1,10 +1,3 @@
-//
-//  DayForecastView.swift
-//  GoodWeather
-//
-//  Created by Łukasz Andrzejewski on 15/02/2021.
-//
-
 import SwiftUI
 
 struct DayForecastView: View {
@@ -13,11 +6,12 @@ struct DayForecastView: View {
     
     var body: some View {
         VStack(spacing: 4) {
-            Text(viewModel.date)
-                .defaultStyle()
             Image(systemName: viewModel.icon)
                 .icon()
+                .padding(.bottom, 4)
             Text(viewModel.temperature)
+                .defaultStyle()
+            Text(viewModel.date)
                 .defaultStyle()
         }
     }
@@ -27,7 +21,7 @@ struct DayForecastView: View {
 struct DayForecastView_Previews: PreviewProvider {
     
     static var previews: some View {
-        DayForecastView(viewModel: DayForecastViewModel(date: "Pn.", temperature: "-12°", icon: "sun.max.fill"))
+        DayForecastView(viewModel: DayForecastViewModel(icon: "sun.max.fill", temperature: "-12°", date: "Pn."))
             .preferredColorScheme(.dark)
     }
     

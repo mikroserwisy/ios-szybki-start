@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  GoodWeather
-//
-//  Created by Łukasz Andrzejewski on 15/02/2021.
-//
-
 import SwiftUI
 
 struct ForecastView: View {
@@ -15,7 +8,7 @@ struct ForecastView: View {
     
     var body: some View {
         ZStack {
-            LinearGradient(gradient: Gradient(colors: [.top, .bottom]), startPoint: .top, endPoint: .bottom)
+            LinearGradient(gradient: Gradient(colors: [Color("top"), Color("bottom")]), startPoint: .top, endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all)
             VStack {
                 HStack {
@@ -46,9 +39,7 @@ struct ForecastView: View {
         .onChange(of: location, perform: viewModel.getWeather(for:))
         .sheet(isPresented: $showSettings) { SettingsView(isVisible: $showSettings) }
         .alert(isPresented: $viewModel.loadingError) {
-            Alert(title: Text(LocalizedStringKey("Alert")),
-                  message: Text(LocalizedStringKey("Weather refresh failed. Try again later")),
-                  dismissButton: .default(Text(LocalizedStringKey("Ok"))))
+            Alert(title: Text("Alert"), message: Text("Weather refresh failed. Try again later"), dismissButton: .default(Text("Ok")))
         }
     }
     
@@ -57,7 +48,7 @@ struct ForecastView: View {
 struct ContentView_Previews: PreviewProvider {
     
     static var previews: some View {
-        ForecastView(viewModel: ForecastViewModel(weatherService: FakeWeatherService()))
+        ForecastView(viewModel: ForecastViewModel(forecastProvider: FakeForecastProvider()))
     }
     
 }

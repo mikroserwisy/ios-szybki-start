@@ -1,14 +1,7 @@
-//
-//  Forecast.swift
-//  GoodWeather
-//
-//  Created by Łukasz Andrzejewski on 15/02/2021.
-//
-
-struct Forecast: Codable {
+struct ForecastDto: Codable {
     
-    let description: [Description]
-    let temperature: Temperature
+    let description: [DescriptionDto]
+    let temperature: TemperatureDto
     let date: Double
     
     enum CodingKeys: String, CodingKey {

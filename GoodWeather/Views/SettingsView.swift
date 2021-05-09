@@ -1,10 +1,3 @@
-//
-//  SettingsView.swift
-//  GoodWeather
-//
-//  Created by Łukasz Andrzejewski on 15/02/2021.
-//
-
 import SwiftUI
 
 struct SettingsView: View {
@@ -36,8 +29,8 @@ struct SettingsView: View {
     
     private var closeButton: some View {
         Image(systemName: "xmark.circle")
-            .imageScale(.large)
-            .frame(width: 40, height: 40)
+            .symbol(width: 20, height: 20, color: .gray)
+            .padding(EdgeInsets(top: 2, leading: 0, bottom: 0, trailing: 6))
     }
     
 }
