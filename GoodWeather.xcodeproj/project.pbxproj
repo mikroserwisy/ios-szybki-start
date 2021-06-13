@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B21D3A0C25DA7A410089171D /* DescriptionDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21D3A0B25DA7A410089171D /* DescriptionDto.swift */; };
+		B21D3A0C25DA7A410089171D /* WeatherDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21D3A0B25DA7A410089171D /* WeatherDto.swift */; };
 		B21D3A1125DA7B9C0089171D /* TemperatureDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21D3A1025DA7B9C0089171D /* TemperatureDto.swift */; };
-		B21D3A1625DA7BD70089171D /* ForecastDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21D3A1525DA7BD70089171D /* ForecastDto.swift */; };
-		B21D3A1B25DA7CB00089171D /* WeatherDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21D3A1A25DA7CB00089171D /* WeatherDto.swift */; };
+		B21D3A1625DA7BD70089171D /* DayForecastDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21D3A1525DA7BD70089171D /* DayForecastDto.swift */; };
+		B21D3A1B25DA7CB00089171D /* ResponseDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21D3A1A25DA7CB00089171D /* ResponseDto.swift */; };
 		B21D3A2025DA7D530089171D /* ForecastProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21D3A1F25DA7D530089171D /* ForecastProvider.swift */; };
 		B21D3A2525DA7E2D0089171D /* HttpError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21D3A2425DA7E2C0089171D /* HttpError.swift */; };
 		B21D3A2A25DA7EC10089171D /* FakeForecastProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21D3A2925DA7EC10089171D /* FakeForecastProvider.swift */; };
@@ -48,10 +48,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B21D3A0B25DA7A410089171D /* DescriptionDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionDto.swift; sourceTree = "<group>"; };
+		B21D3A0B25DA7A410089171D /* WeatherDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDto.swift; sourceTree = "<group>"; };
 		B21D3A1025DA7B9C0089171D /* TemperatureDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureDto.swift; sourceTree = "<group>"; };
-		B21D3A1525DA7BD70089171D /* ForecastDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastDto.swift; sourceTree = "<group>"; };
-		B21D3A1A25DA7CB00089171D /* WeatherDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDto.swift; sourceTree = "<group>"; };
+		B21D3A1525DA7BD70089171D /* DayForecastDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayForecastDto.swift; sourceTree = "<group>"; };
+		B21D3A1A25DA7CB00089171D /* ResponseDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseDto.swift; sourceTree = "<group>"; };
 		B21D3A1F25DA7D530089171D /* ForecastProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastProvider.swift; sourceTree = "<group>"; };
 		B21D3A2425DA7E2C0089171D /* HttpError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpError.swift; sourceTree = "<group>"; };
 		B21D3A2925DA7EC10089171D /* FakeForecastProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeForecastProvider.swift; sourceTree = "<group>"; };
@@ -102,17 +102,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B269B732264ED9C0004B5CF0 /* Adapters */ = {
+			isa = PBXGroup;
+			children = (
+				B2B6BE602647C52200B05579 /* Api */,
+			);
+			path = Adapters;
+			sourceTree = "<group>";
+		};
 		B2B6BE602647C52200B05579 /* Api */ = {
 			isa = PBXGroup;
 			children = (
-				B21D3A1F25DA7D530089171D /* ForecastProvider.swift */,
 				B21D3A2425DA7E2C0089171D /* HttpError.swift */,
 				B21D3A2925DA7EC10089171D /* FakeForecastProvider.swift */,
 				B21D3A4E25DAA6660089171D /* URLSessionForecastProvider.swift */,
-				B21D3A0B25DA7A410089171D /* DescriptionDto.swift */,
+				B21D3A0B25DA7A410089171D /* WeatherDto.swift */,
 				B21D3A1025DA7B9C0089171D /* TemperatureDto.swift */,
-				B21D3A1525DA7BD70089171D /* ForecastDto.swift */,
-				B21D3A1A25DA7CB00089171D /* WeatherDto.swift */,
+				B21D3A1525DA7BD70089171D /* DayForecastDto.swift */,
+				B21D3A1A25DA7CB00089171D /* ResponseDto.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -149,6 +156,7 @@
 		B2CC776025DA606C003C3067 /* GoodWeather */ = {
 			isa = PBXGroup;
 			children = (
+				B269B732264ED9C0004B5CF0 /* Adapters */,
 				B2C6312925DA6D5B00C1D71D /* Commons */,
 				B2CC779325DA69E2003C3067 /* Resources */,
 				B2CC778F25DA697F003C3067 /* Models */,
@@ -189,7 +197,7 @@
 		B2CC778F25DA697F003C3067 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				B2B6BE602647C52200B05579 /* Api */,
+				B21D3A1F25DA7D530089171D /* ForecastProvider.swift */,
 				B2B6BE782647C60400B05579 /* DayForecast.swift */,
 			);
 			path = Models;
@@ -357,15 +365,15 @@
 				B2CC776425DA606C003C3067 /* ForecastView.swift in Sources */,
 				B21D3A4725DA945D0089171D /* SettingsView.swift in Sources */,
 				B2CC776225DA606C003C3067 /* GoodWeatherApp.swift in Sources */,
-				B21D3A1B25DA7CB00089171D /* WeatherDto.swift in Sources */,
+				B21D3A1B25DA7CB00089171D /* ResponseDto.swift in Sources */,
 				B21D3A2F25DA816B0089171D /* ForecastViewModel.swift in Sources */,
 				B2C6313F25DA75D100C1D71D /* DayForecastView.swift in Sources */,
 				B21D3A4F25DAA6660089171D /* URLSessionForecastProvider.swift in Sources */,
-				B21D3A0C25DA7A410089171D /* DescriptionDto.swift in Sources */,
+				B21D3A0C25DA7A410089171D /* WeatherDto.swift in Sources */,
 				B21D3A2A25DA7EC10089171D /* FakeForecastProvider.swift in Sources */,
 				B21D3A2525DA7E2D0089171D /* HttpError.swift in Sources */,
 				B21D3A1125DA7B9C0089171D /* TemperatureDto.swift in Sources */,
-				B21D3A1625DA7BD70089171D /* ForecastDto.swift in Sources */,
+				B21D3A1625DA7BD70089171D /* DayForecastDto.swift in Sources */,
 				B21D3A2025DA7D530089171D /* ForecastProvider.swift in Sources */,
 				B2B6BE792647C60400B05579 /* DayForecast.swift in Sources */,
 				B21D3A3425DA879D0089171D /* DayForecastViewModel.swift in Sources */,

@@ -15,7 +15,7 @@ final class URLSessionForecastProvider: ForecastProvider {
                 callback(.failure(.requestFailed))
                 return
             }
-            if let weatherDto = try? JSONDecoder().decode(WeatherDto.self, from: json) {
+            if let weatherDto = try? JSONDecoder().decode(ResponseDto.self, from: json) {
                 let forecast = self.toModel(weatherDto: weatherDto)
                 callback(.success(forecast))
             } else {
@@ -24,12 +24,14 @@ final class URLSessionForecastProvider: ForecastProvider {
         }.resume()
     }
     
-    private func toModel(weatherDto: WeatherDto) -> [DayForecast] {
+    private func toModel(weatherDto: ResponseDto) -> [DayForecast] {
         weatherDto.forecast.map { forecastDto in
-            let icon = forecastDto.description.first?.icon ?? ""
+            let icon = forecastDto.weather.first?.icon ?? ""
+            let description = forecastDto.weather.first?.description ?? ""
             let temperature = Int(forecastDto.temperature.day)
+            let pressure = Int(forecastDto.pressure)
             let date =  Date(timeIntervalSince1970: forecastDto.date)
-            return DayForecast(icon: icon, temperature: temperature, date: date)
+            return DayForecast(icon: icon, description: description, temperature: temperature, pressure: pressure, date: date)
         }
     }
     

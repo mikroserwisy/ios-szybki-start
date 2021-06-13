@@ -1,6 +1,6 @@
-struct WeatherDto: Codable {
+struct ResponseDto: Codable {
     
-    let forecast: [ForecastDto]
+    let forecast: [DayForecastDto]
     
     enum CodingKeys: String, CodingKey {
     

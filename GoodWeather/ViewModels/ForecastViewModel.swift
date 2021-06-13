@@ -38,9 +38,11 @@ final class ForecastViewModel: ObservableObject {
         data.map { entry in
             let date = dateFormatter.string(from: entry.date)
             let temperature = "\(entry.temperature)°"
+            let pressure = "\(entry.pressure) hPa"
             let icon = icons[entry.icon] ?? "xmark.circle"
-            return DayForecastViewModel(icon: icon, temperature: temperature, date: date)
+            return DayForecastViewModel(icon: icon, description: entry.description, temperature: temperature, pressure: pressure, date: date)
         }
     }
+    
     
 }

@@ -22,8 +22,14 @@ struct ForecastView: View {
                 if let forecast = viewModel.forecast.first {
                     Image(systemName: forecast.icon)
                         .icon(width: 200, height: 200)
-                    Text(forecast.temperature)
-                        .defaultStyle(size: 64)
+                    Text(forecast.description)
+                        .defaultStyle(size: 48)
+                    HStack(spacing: 40) {
+                        Text(forecast.temperature)
+                            .defaultStyle(size: 34)
+                        Text(forecast.pressure)
+                            .defaultStyle(size: 34)
+                    }
                 }
                 Spacer()
                 HStack(spacing: 16) {
